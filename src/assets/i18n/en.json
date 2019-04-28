@@ -1,0 +1,10 @@
+{
+    "APP_NAME": "Exp. & Rep. Projects",
+    "PAGES": {
+        "HOME": {
+            "TITLE_PAGE": "HOME",
+            "TITLE": "Home",
+            "CONTENT": "Content | Content Test"
+          }
+        }
+ }
