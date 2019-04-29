@@ -12,16 +12,23 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// Carga archivos de idioma escritos en formato JSON.
+/**
+ * Carga archivos de idioma escritos en formato JSON
+ */
 export function customTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 /**
  * Modulo principal de la aplicacion
+ *
+ * @author Jhonier Gaviria M. - Abr. 28-2019
+ * @version 1.0.0
  */
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,

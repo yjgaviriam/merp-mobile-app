@@ -1,10 +1,13 @@
 {
     "APP_NAME": "Exp. & Rep. Projects",
-    "PAGES": {
-        "HOME": {
-            "TITLE_PAGE": "HOME",
-            "TITLE": "Home",
-            "CONTENT": "Content | Content Test"
-          }
-        }
- }
+    "ADDRESS": "Address",
+    "CANCEL": "Cancel",
+    "CITY": "City",
+    "CHANGE_LANGUAGE": "Change Lenguaje",
+    "CODE": "Code",
+    "ENGLISH": "English",
+    "HOME": "Home",
+    "LANGUAGE": "Lenguaje",
+    "OK": "Ok",
+    "SPANISH": "Spanish"
+}

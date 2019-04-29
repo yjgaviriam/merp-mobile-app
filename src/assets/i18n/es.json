@@ -1,10 +1,13 @@
 {
     "APP_NAME": "Proyectos Exp. y Rep.",
-    "PAGES": {
-        "HOME": {
-            "TITLE_PAGE": "INICIO",
-            "TITLE": "Inicio",
-            "CONTENT": "Content | Prueba contenido"
-          }
-        }
-  }
+    "ADDRESS": "Dirección",
+    "CANCEL": "Cancelar",
+    "CITY": "Ciudad",
+    "CHANGE_LANGUAGE": "Cambiar Idioma",
+    "CODE": "Código",
+    "ENGLISH": "Inglés",
+    "HOME": "Home",
+    "LANGUAGE": "Idioma",
+    "OK": "Aceptar",
+    "SPANISH": "Español"
+}
