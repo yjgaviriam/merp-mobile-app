@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Project } from 'src/app/entities/project';
 
 /**
  * Servicio principal de consulta de proyectos
@@ -14,17 +15,17 @@ export class ProjectService {
   /**
    * Listado de proyectos
    */
-  private projects = [
+  private projects: Project[] = [
     {
-      id: '1',
+      id: 1,
       name: 'Proyecto A',
       image: '../../assets/img/project-management-2.png',
-      code: 'xxxxxxxx',
+      code: 'SASR54',
       city: 'Armenia',
       address: 'Cerca del norte Cl. 17 # 20-55'
     },
     {
-      id: '2',
+      id: 2,
       name: 'Proyecto B',
       image: '../../assets/img/img2.jpg',
       code: 'eeeeeeee',
@@ -32,7 +33,7 @@ export class ProjectService {
       address: 'Cra. 17 # 55-55'
     },
     {
-      id: '3',
+      id: 3,
       name: 'Proyecto C',
       image: '../../assets/img/project-management.png',
       code: 'ttttyyyt',
@@ -49,7 +50,7 @@ export class ProjectService {
   /**
    * Permite obtener el listado de proyectos
    */
-  public getProjects(): any[] {
+  public getProjects(): Project[] {
     return this.projects;
   }
 
