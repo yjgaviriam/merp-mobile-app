@@ -8,6 +8,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +48,8 @@ export function customTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    SQLite,
+    SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
