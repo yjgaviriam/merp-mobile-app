@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from 'src/app/entities/project';
+import { AppConstants } from 'src/app/app-constants';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Servicio principal de consulta de proyectos
@@ -13,45 +15,28 @@ import { Project } from 'src/app/entities/project';
 export class ProjectService {
 
   /**
-   * Listado de proyectos
+   * Direccion del api para obtener los recursos
    */
-  private projects: Project[] = [
-    {
-      id: 1,
-      name: 'Proyecto A',
-      image: '../../assets/img/project-management-2.png',
-      code: 'SASR54',
-      city: 'Armenia',
-      address: 'Cerca del norte Cl. 17 # 20-55'
-    },
-    {
-      id: 2,
-      name: 'Proyecto B',
-      image: '../../assets/img/img2.jpg',
-      code: 'eeeeeeee',
-      city: 'Armenia',
-      address: 'Cra. 17 # 55-55'
-    },
-    {
-      id: 3,
-      name: 'Proyecto C',
-      image: '../../assets/img/project-management.png',
-      code: 'ttttyyyt',
-      city: 'Calarcá',
-      address: 'Cl. 27 # 20-55'
-    }
-  ];
+  private readonly URL_API: string = AppConstants.API_URL;
 
   /**
    * Constructor de la clase
+   *
+   * @param httpClient Servicio para realizar peticiones
    */
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   /**
-   * Permite obtener el listado de proyectos
+   * Permite obtener todos los proyectos de un usuario
+   *
+   * @return Un `Observable` con la respuesta del servidor
    */
-  public getProjects(): Project[] {
-    return this.projects;
+  public getProjects(userId: number) {
+    return this.httpClient.get(this.URL_API + 'v1/projects/by-user/' + userId);
+  }
+
+  public downloadProject(code: string) {
+    return this.httpClient.get(this.URL_API + 'v1/projects/download' + code);
   }
 
 }

@@ -9,5 +9,31 @@
     "HOME": "Home",
     "LANGUAGE": "Language",
     "OK": "Ok",
-    "SPANISH": "Spanish"
+    "SPANISH": "Spanish",
+    "SUBSTATIONS": {
+        "REGISTERED": "Registered Substations"
+    },
+    "CIRCUIT": "Circuit",
+    "DATE": "Date",
+    "DEPARTMENT": "Deparment",
+    "ELECTRICAL_VOLTAGE_LEVEL": "Electrical voltage level",
+    "EMAIL": "Email",
+    "ENTERPRISE": "Enterprise",
+    "ESTATE": "Estate",
+    "LOGOUT": "Logout",
+    "NAME": "Name",
+    "NEIGHBORHOOD": "Neighborhood",
+    "NIT": "Nit",
+    "LAST_NAME": "Last Name",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "PASSWORD": "Password",
+    "REGISTER": "Register",
+    "ROLE": "Role",
+    "STATUS": "Status",
+    "SUBSTATION": "Substation",
+    "TYPE_NETWORK": "Type Network",
+    "UPDATE": "Update",
+    "USERNAME": "User",
+    "VILLAGE": "Village"
 }

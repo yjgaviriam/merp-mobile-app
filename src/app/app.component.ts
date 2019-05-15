@@ -92,6 +92,14 @@ export class AppComponent {
   }
 
   /**
+   * Permite cerrar sesion
+   */
+  public logout(): void {
+    this.userService.removeStatusLogged();
+    location.reload();
+  }
+
+  /**
    * Permite mostrar una ventana de alerta para seleccionar el lenguaje para la aplicacion
    *
    * @param fields Contiene las variable de traduccion necesarias para el alert

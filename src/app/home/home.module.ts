@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
+import { ModalModule } from '../modals/modal.module';
 
 /**
  * Modulo de la pagina home
@@ -21,6 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     IonicModule,
     TranslateModule,
     SharedModule,
+    ModalModule,
     RouterModule.forChild([
       {
         path: '',

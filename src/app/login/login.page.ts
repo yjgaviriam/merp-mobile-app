@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppConstants } from '../app-constants';
 import { UserService } from '../services/user/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,10 +31,13 @@ export class LoginPage implements OnInit {
    * Contructor de la clase
    *
    * @param userService Servicio para trabajar con los usuarios
+   * @param toastr Servicio para mostrar mensajes
+   * @param router Servicio para controlar rutas
    */
   constructor(
     private userService: UserService,
-    // private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   /**
@@ -56,13 +61,13 @@ export class LoginPage implements OnInit {
   public login(): void {
     this.userService.login(this.username, this.password).subscribe((response: any) => {
       this.userService.setStatusLogged(response.data.user, response.data.token);
-      location.reload();
+      this.router.navigate(['/']);
     }, (httpErrorResponse: HttpErrorResponse) => {
       // Validamos con los codigos de respuesta esperados en un error
       if (httpErrorResponse.status === AppConstants.HTTP_CODES.ERRORS.HTTP_UNAUTHORIZED) {
-        // this.toastr.error(httpErrorResponse.error.data.message);
+        this.toastr.error(httpErrorResponse.error.data.message);
       } else {
-        // this.toastr.error(AppConstants.MESSAGES.ERROR.HTTP_GENERAL_MESSAGE);
+        this.toastr.error(AppConstants.MESSAGES.ERROR.HTTP_GENERAL_MESSAGE);
       }
     });
   }
