@@ -36,7 +36,7 @@ export class ProjectService {
   }
 
   public downloadProject(code: string) {
-    return this.httpClient.get(this.URL_API + 'v1/projects/download' + code);
+    return this.httpClient.get(this.URL_API + 'v1/projects/download/' + code);
   }
 
 }
