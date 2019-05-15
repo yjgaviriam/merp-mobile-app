@@ -3,6 +3,8 @@ import { ProjectService } from '../services/project/project.service';
 import { Project } from '../entities/project';
 import { ModalController } from '@ionic/angular';
 import { DownloadProjectPage } from '../modals/download-project/download-project.page';
+import { User } from '../entities/user';
+import { UserService } from '../services/user/user.service';
 
 /**
  * Pagina de inicio de la aplicacion
@@ -23,12 +25,28 @@ export class HomePage {
   public projects: Project[];
 
   /**
+   * Guarda la info del usuario
+   */
+  public user: User;
+
+  /**
    * Constructor de la clase
    *
    * @param projectService Servicio de gestion de proyectos de la aplicacion
+   * @param userService Servicio para trabajar con los usuarios
    */
-  public constructor(private projectService: ProjectService, private modalController: ModalController) {
-    this.projects = this.projectService.getProjects();
+  public constructor(
+    private projectService: ProjectService,
+    private modalController: ModalController,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getStatusLogged();
+    // Si existe el usuario se descargan sus proyectos
+    if (this.user && this.user.id) {
+      this.projectService.getProjects(this.user.id).subscribe((response: any) => {
+        this.projects = response.data;
+      });
+    }
   }
 
   /**

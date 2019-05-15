@@ -5,7 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { ProjectService } from './services/project/project.service';
-import { Constants } from './constants';
+import { Project } from './entities/project';
+import { User } from './entities/user';
+import { UserService } from './services/user/user.service';
+import { AppConstants } from './app-constants';
+import { Router } from '@angular/router';
 
 /**
  * Componente principal de la aplicacion
@@ -22,7 +26,12 @@ export class AppComponent {
   /**
    * Contiene el listado de proyectos
    */
-  public projects: any[];
+  public projects: Project[];
+
+  /**
+   * Guarda la info del usuario
+   */
+  public user: User;
 
   /**
    * Constructor de la clase
@@ -33,6 +42,8 @@ export class AppComponent {
    * @param translateService Permite controlar el cambio de idioma
    * @param projectService Servicio de gestion de proyectos de la aplicacion
    * @param alertController Permite gestionar alertas
+   * @param userService Servicio para trabajar con los usuarios
+   * @param router Servicio para controlar rutas
    */
   constructor(
     private platform: Platform,
@@ -40,14 +51,24 @@ export class AppComponent {
     private statusBar: StatusBar,
     private translateService: TranslateService,
     private projectService: ProjectService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private userService: UserService,
+    private router: Router
   ) {
     this.initializeApp();
     let userLang = localStorage.getItem('__LANGUAGE__') !== null ? localStorage.getItem('__LANGUAGE__') : navigator.language.split('-')[0];
     userLang = /(en|de|it|fr|es|be)/gi.test(userLang) ? userLang : 'en';
     localStorage.setItem('__LANGUAGE__', userLang);
     this.translateService.use(userLang);
-    this.projects = this.projectService.getProjects();
+    this.user = this.userService.getStatusLogged();
+    // Si existe el usuario se descargan sus proyectos
+    if (this.user && this.user.id) {
+      this.projectService.getProjects(this.user.id).subscribe((response: any) => {
+        this.projects = response.data;
+      });
+    } else {
+      this.router.navigate(['/login'])
+    }
   }
 
   /**
@@ -82,14 +103,14 @@ export class AppComponent {
         {
           type: 'radio',
           label: fields.ENGLISH,
-          value: Constants.LANGUAGES.EN,
-          checked: localStorage.getItem('__LANGUAGE__') === Constants.LANGUAGES.EN ? true : false
+          value: AppConstants.LANGUAGES.EN,
+          checked: localStorage.getItem('__LANGUAGE__') === AppConstants.LANGUAGES.EN ? true : false
         },
         {
           type: 'radio',
           label: fields.SPANISH,
-          value: Constants.LANGUAGES.ES,
-          checked: localStorage.getItem('__LANGUAGE__') === Constants.LANGUAGES.ES ? true : false
+          value: AppConstants.LANGUAGES.ES,
+          checked: localStorage.getItem('__LANGUAGE__') === AppConstants.LANGUAGES.ES ? true : false
         }
       ],
       buttons: [

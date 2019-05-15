@@ -1,0 +1,21 @@
+<!-- Header de la aplicacion -->
+<app-header></app-header>
+
+<!-- Contenido -->
+<ion-content>
+  <div class="text-center content-login" [ngStyle]="{'min-height': clientHeight ? clientHeight : '' }">
+    <form class="form-signin">
+      <!-- <div class="form-control">
+        <img class="mb-4 img-fluid" alt="Responsive image" src="../../assets/img/logo.png" alt="">
+      </div> -->
+      <label for="inputEmail" class="sr-only">{{ 'USERNAME' | translate }}</label>
+      <input [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="username" id="inputEmail"
+        class="form-control" placeholder="{{ 'USERNAME' | translate }}" required autofocus>
+      <label for="inputPassword" class="sr-only">{{ 'PASSWORD' | translate }}</label>
+      <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" type="password" id="inputPassword"
+        class="form-control" placeholder="{{ 'PASSWORD' | translate }}" required>
+      <button class="btn btn-lg btn-primary btn-block" (click)="login()">Iniciar Sesión</button>
+    </form>
+  </div>
+
+</ion-content>

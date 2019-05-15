@@ -7,7 +7,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'project-detail/:id', loadChildren: './project-detail/project-detail.module#ProjectDetailPageModule' },
+  { path: 'project-detail/:id', loadChildren: './project-detail/project-detail.module#ProjectDetailPageModule' },  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+
 ];
 
 /**

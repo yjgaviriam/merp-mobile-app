@@ -6,9 +6,9 @@
 
   <!-- Listado de proyectos -->
   <ion-card *ngFor="let project of projects" [routerLink]="['/project-detail', project.id]">
-    <!-- <ion-card-header>
-      <img [src]="project.image" alt="image-project" height="200px">
-    </ion-card-header> -->
+    <ion-card-header>
+      <img [src]="'../../assets/img/project-management-2.png'" alt="image-project" height="200px">
+    </ion-card-header>
     <!-- <ion-item>
 
       <ion-icon name="pin" slot="start"></ion-icon>
