@@ -35,8 +35,8 @@ export class ProjectService {
     return this.httpClient.get(this.URL_API + 'v1/projects/by-user/' + userId);
   }
 
-  public downloadProject(code: string) {
-    return this.httpClient.get(this.URL_API + 'v1/projects/download/' + code);
+  public downloadProject(code: string, userId: number) {
+    return this.httpClient.get(this.URL_API + 'v1/projects/download/' + code + '/user/' + userId);
   }
 
 }
