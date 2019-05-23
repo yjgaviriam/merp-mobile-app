@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
-
-import { ProjectDetailPage } from './project-detail.page';
-import { SharedModule } from '../shared/shared.module';
+import { HomePage } from './home.page';
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../../shared/shared.module';
+import { ModalModule } from '../../modals/modal.module';
 
 /**
- * Modulo de la pagina del detalle de un proyecto
+ * Modulo de la pagina home
  *
  * @author Jhonier Gaviria M. - Abr. 28-2019
  * @version 1.0.0
@@ -19,14 +20,16 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     SharedModule,
+    ModalModule,
     RouterModule.forChild([
       {
         path: '',
-        component: ProjectDetailPage
+        component: HomePage
       }
     ])
   ],
-  declarations: [ProjectDetailPage]
+  declarations: [HomePage]
 })
-export class ProjectDetailPageModule {}
+export class HomePageModule {}

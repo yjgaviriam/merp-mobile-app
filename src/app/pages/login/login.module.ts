@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({

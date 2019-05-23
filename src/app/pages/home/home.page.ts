@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { ProjectService } from '../services/project/project.service';
-import { Project } from '../entities/project';
+import { Component, OnInit } from '@angular/core';
+import { ProjectService } from '../../services/project/project.service';
+import { Project } from '../../entities/project';
 import { ModalController } from '@ionic/angular';
-import { DownloadProjectPage } from '../modals/download-project/download-project.page';
-import { User } from '../entities/user';
-import { UserService } from '../services/user/user.service';
+import { DownloadProjectPage } from '../../modals/download-project/download-project.page';
+import { User } from '../../entities/user';
+import { UserService } from '../../services/user/user.service';
 
 /**
  * Pagina de inicio de la aplicacion
@@ -17,7 +17,7 @@ import { UserService } from '../services/user/user.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   /**
    * Contiene el listado de proyectos
@@ -40,6 +40,11 @@ export class HomePage {
     private modalController: ModalController,
     private userService: UserService
   ) {
+    
+  }
+
+
+  ngOnInit(){
     this.user = this.userService.getStatusLogged();
     // Si existe el usuario se descargan sus proyectos
     if (this.user && this.user.id) {

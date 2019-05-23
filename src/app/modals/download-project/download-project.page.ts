@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/entities/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-download-project',
@@ -15,12 +16,16 @@ export class DownloadProjectPage {
 
   user: User;
 
-  constructor(private projectService: ProjectService, private router: Router, private userService: UserService) { 
+  constructor(private projectService: ProjectService,
+    private toastr: ToastrService,
+    private router: Router, private userService: UserService) {
     this.user = this.userService.getStatusLogged();
   }
 
   public downloadProject() {
-    this.projectService.downloadProject(this.code, this.user).subscribe(() => {
+    this.projectService.downloadProject(this.code, this.user.id).subscribe((response: any) => {
+      // Mostramos el mensaje de registro y cerramos el modal
+      this.toastr.success(response.data.message);
       this.router.navigate(['/']);
     });
   }

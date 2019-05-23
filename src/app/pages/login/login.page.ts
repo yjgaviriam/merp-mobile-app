@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AppConstants } from '../app-constants';
-import { UserService } from '../services/user/user.service';
+import { AppConstants } from '../../app-constants';
+import { UserService } from '../../services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
