@@ -29,11 +29,6 @@ export class AppComponent {
   public projects: Project[];
 
   /**
-   * Guarda la info del usuario
-   */
-  public user: User;
-
-  /**
    * Constructor de la clase
    *
    * @param platform Permite trabajar con las distintas plataformas [android, cordova, electron, ios, ..]
@@ -60,14 +55,13 @@ export class AppComponent {
     userLang = /(en|de|it|fr|es|be)/gi.test(userLang) ? userLang : 'en';
     localStorage.setItem('__LANGUAGE__', userLang);
     this.translateService.use(userLang);
-    this.user = this.userService.getStatusLogged();
     // Si existe el usuario se descargan sus proyectos
-    if (this.user && this.user.id) {
-      this.projectService.getProjects(this.user.id).subscribe((response: any) => {
+    if (this.userService.user && this.userService.user.id) {
+      this.projectService.getProjects(this.userService.user.id).subscribe((response: any) => {
         this.projects = response.data;
       });
     } else {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
   }
 
@@ -112,13 +106,13 @@ export class AppComponent {
           type: 'radio',
           label: fields.ENGLISH,
           value: AppConstants.LANGUAGES.EN,
-          checked: localStorage.getItem('__LANGUAGE__') === AppConstants.LANGUAGES.EN ? true : false
+          checked: localStorage.getItem('__LANGUAGE__') === AppConstants.LANGUAGES.EN
         },
         {
           type: 'radio',
           label: fields.SPANISH,
           value: AppConstants.LANGUAGES.ES,
-          checked: localStorage.getItem('__LANGUAGE__') === AppConstants.LANGUAGES.ES ? true : false
+          checked: localStorage.getItem('__LANGUAGE__') === AppConstants.LANGUAGES.ES
         }
       ],
       buttons: [

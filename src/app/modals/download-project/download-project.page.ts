@@ -14,16 +14,14 @@ export class DownloadProjectPage {
 
   code: string;
 
-  user: User;
-
-  constructor(private projectService: ProjectService,
+  constructor(
+    private projectService: ProjectService,
     private toastr: ToastrService,
-    private router: Router, private userService: UserService) {
-    this.user = this.userService.getStatusLogged();
-  }
+    private router: Router, private userService: UserService
+  ) { }
 
   public downloadProject() {
-    this.projectService.downloadProject(this.code, this.user.id).subscribe((response: any) => {
+    this.projectService.downloadProject(this.code, this.userService.user.id).subscribe((response: any) => {
       // Mostramos el mensaje de registro y cerramos el modal
       this.toastr.success(response.data.message);
       this.router.navigate(['/']);

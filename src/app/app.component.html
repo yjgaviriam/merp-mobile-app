@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu *ngIf="user && user.id">
+    <ion-menu *ngIf="userService.user && userService.user.id">
       <ion-header>
         <ion-toolbar>
           <ion-title>Menu</ion-title>

@@ -21,11 +21,18 @@ export class UserService {
   private readonly URL_API: string = AppConstants.API_URL;
 
   /**
+   * Usuario identificado en la aplicacion
+   */
+  private _user: User;
+
+  /**
    * Constructor de la clase
    *
    * @param httpClient Servicio para realizar peticiones
    */
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this._user = new User();
+  }
 
   /**
    * Permite realizar la eliminacion de un usuario
@@ -45,10 +52,6 @@ export class UserService {
    */
   public getAllUsers(): Observable<{ data: User[] }> {
     return this.httpClient.get<{ data: User[] }>(this.URL_API + 'v1/users/');
-  }
-
-  public getStatusLogged(): User {
-    return JSON.parse(localStorage.getItem('__USER__'));
   }
 
   public getToken(): string {
@@ -99,7 +102,17 @@ export class UserService {
   }
 
   public setStatusLogged(user: User, token: string): void {
+    this.user = user;
     localStorage.setItem('__USER__', JSON.stringify(user));
     localStorage.setItem('__TOKEN__', JSON.stringify(token));
+  }
+
+
+  public get user(): User {
+    return JSON.parse(localStorage.getItem('__USER__')) || this._user;
+  }
+
+  public set user(value: User) {
+    this._user = value;
   }
 }
