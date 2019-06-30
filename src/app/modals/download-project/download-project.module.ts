@@ -1,31 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { DownloadProjectPage } from './download-project.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: DownloadProjectPage
-  }
-];
-
+/**
+ * Modulo del modal de descargar proyecto
+ *
+ * @author Jhonier Gaviria M. - Abr. 28-2019
+ * @version 1.0.0
+ */
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SharedModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [DownloadProjectPage],
-  exports: [
-    DownloadProjectPage
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        TranslateModule
+    ],
+    declarations: [
+        DownloadProjectPage
+    ],
+    entryComponents: [
+        DownloadProjectPage
+    ],
+    exports: [
+        DownloadProjectPage
+    ]
 })
-export class DownloadProjectPageModule {}
+export class DownloadProjectPageModule { }

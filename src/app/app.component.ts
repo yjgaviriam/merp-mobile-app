@@ -47,7 +47,7 @@ export class AppComponent {
     private translateService: TranslateService,
     private projectService: ProjectService,
     private alertController: AlertController,
-    private userService: UserService,
+    public userService: UserService,
     private router: Router
   ) {
     this.initializeApp();
