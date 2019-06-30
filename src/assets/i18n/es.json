@@ -4,6 +4,7 @@
     "CANCEL": "Cancelar",
     "CITY": "Municipio",
     "CHANGE_LANGUAGE": "Cambiar Idioma",
+    "DOWNLOAD_PROJECT": "Descargar Proyecto",
     "ENGLISH": "Inglés",
     "HOME": "Inicio",
     "LANGUAGE": "Idioma",
@@ -35,5 +36,6 @@
     "TYPE_NETWORK": "Tipo de Red",
     "UPDATE": "Actualizar",
     "USERNAME": "Usuario",
-    "VILLAGE": "Vereda"
+    "VILLAGE": "Vereda",
+    "ZERO_PROJECTS": "Aún no tienes proyectos asociados. Solicita el código al interventor para descargar el proyecto en el cual trabajas."
 }

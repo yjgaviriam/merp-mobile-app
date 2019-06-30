@@ -24,23 +24,36 @@ export class HomePage implements OnInit {
   public projects: Project[];
 
   /**
+   * Indica si ya respondio el ws de listar proyectos por usuario
+   */
+  public wsResponded: boolean;
+
+  /**
    * Constructor de la clase
    *
    * @param projectService Servicio de gestion de proyectos de la aplicacion
+   * @param modalController Controlador para los modales
    * @param userService Servicio para trabajar con los usuarios
    */
   public constructor(
     private projectService: ProjectService,
     private modalController: ModalController,
     private userService: UserService
-  ) { }
+  ) {
+    this.wsResponded = false;
+    this.projects = [];
+  }
 
-
+  /**
+   * @see {@link https://angular.io/guide/lifecycle-hooks#oninit}
+   */
   ngOnInit(): void {
     // Si existe el usuario se descargan sus proyectos
     if (this.userService.user && this.userService.user.id) {
       this.projectService.getProjects(this.userService.user.id).subscribe((response: any) => {
         this.projects = response.data;
+      }).add(() => {
+        this.wsResponded = true;
       });
     }
   }

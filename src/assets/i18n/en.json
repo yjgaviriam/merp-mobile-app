@@ -5,6 +5,7 @@
     "CITY": "City",
     "CHANGE_LANGUAGE": "Change Language",
     "CODE": "Code",
+    "DOWNLOAD_PROJECT": "Download Project",
     "ENGLISH": "English",
     "HOME": "Home",
     "LANGUAGE": "Language",
@@ -35,5 +36,6 @@
     "TYPE_NETWORK": "Type Network",
     "UPDATE": "Update",
     "USERNAME": "User",
-    "VILLAGE": "Village"
+    "VILLAGE": "Village",
+    "ZERO_PROJECTS": "You do not have associated projects yet. Request the code from the inspector to download the project in which you work."
 }

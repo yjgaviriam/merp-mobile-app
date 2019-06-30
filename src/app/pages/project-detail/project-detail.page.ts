@@ -26,7 +26,10 @@ export class ProjectDetailPage implements OnInit {
    */
   constructor(private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
+  /**
+   * @see {@link https://angular.io/guide/lifecycle-hooks#oninit}
+   */
+  ngOnInit(): void {
     this.projectId = this.activatedRoute.snapshot.paramMap.get('id');
   }
 

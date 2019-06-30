@@ -33,6 +33,20 @@
 
   </ion-card>
 
+  <!-- Si no tiene proyectos descargados -->
+  <ion-grid *ngIf="projects.length === 0 && wsResponded">
+    <ion-row>
+      <ion-col>
+        {{ 'ZERO_PROJECTS' | translate }}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="primary" (click)="showModalAddProject()">{{ 'DOWNLOAD_PROJECT' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <!-- Agregar proyecto -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="showModalAddProject()">
     <ion-fab-button>
@@ -40,22 +54,4 @@
     </ion-fab-button>
   </ion-fab>
 
-  <!-- fab placed in the center of the content with a list on each side -->
-  <!-- <ion-fab vertical="center" horizontal="center" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="share"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-list side="top">
-        <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
-      </ion-fab-list>
-      <ion-fab-list side="bottom">
-        <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
-      </ion-fab-list>
-      <ion-fab-list side="start">
-        <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
-      </ion-fab-list>
-      <ion-fab-list side="end">
-        <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-      </ion-fab-list>
-    </ion-fab> -->
 </ion-content>
